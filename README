@@ -2,6 +2,9 @@ Author: Sergey Nehaenko <sergey.nekhaenko@gmail.com>
 Languane: PHP
 Release Date: 1.04.2012
 Description: Detect Browser, Browser Version, Device, OS , OS Version
-<html>
-111
-</html>
+
+Changelog:
+	v 1.0
+		support detection:
+			Opera
+
