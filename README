@@ -5,21 +5,21 @@ Description: Detect Browser, Browser Version, Device, OS , OS Version
 
 Changelog:
 	v 1.0:
-	-support detection browsers:
+	•support detection browsers:
 	 -Opera
 	 -Mozilla Firefox
 	 -Google Chrome
 	 -Chromium
 	 -Opera Mini
 	 -Opera Mobile
-	-support detection devices:
+	•support detection devices:
 	 -PC
 	 -iPod
 	 -iPhone
 	 -iPad
 	 -Android devices
 	 -Nokia S60 Series
-	-support detection os:
+	•support detection os:
 	 -Windows:
 		-Mobile
 		-XP
