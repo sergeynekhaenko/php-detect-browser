@@ -4,7 +4,12 @@ Release Date: 1.04.2012
 Description: Detect Browser, Browser Version, Device, OS , OS Version
 
 Changelog:
-	v 1.0
-		support detection:
-			Opera
+	v 1.0:
+	-support detection browsers:
+	 -Opera
+	 -Mozilla Firefox
+	 -Google Chrome
+	 -Chromium
+	 -Opera Mini
+	 -Opera Mobile
 
