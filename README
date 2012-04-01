@@ -12,4 +12,26 @@ Changelog:
 	 -Chromium
 	 -Opera Mini
 	 -Opera Mobile
+	-support detection devices:
+	 -PC
+	 -iPod
+	 -iPhone
+	 -iPad
+	 -Android devices
+	 -Nokia S60 Series
+	-support detection os:
+	 -Windows:
+		-Mobile
+		-XP
+		-Vista
+		-Windows 7
+		-Windows 8
+	-Linux:
+		-Linux
+		-Ubuntu
+	-Mac OS
+	-Android
+	-iOS
+	-Symbian
+
 
