@@ -31,6 +31,7 @@ class browser
 		$avant = "/Avant Browser/"; /* Awant desctop Browser */
 		$camino = "/Camino/"; /* Camino MAC OS web Browser */
 		$epiphany = "/Epiphany/"; /* Epiphany web Browser (default Gnome Browser) */
+		$konqueror = "/Konqueror/"; /* Konqueror web Browser */
 		$flock = "/Flock/"; /* Flock desctop Web Browser */
 		/* pattern part stop */
 		
@@ -186,6 +187,13 @@ class browser
 			/* Camino desctop Browser */
 			$this->browser['device'] = 'PC';
 			$this->get_epiphany();
+		}
+		else
+		if(preg_match($konqueror,$ua))
+		{
+			/* Camino desctop Browser */
+			$this->browser['device'] = 'PC';
+			$this->get_konqueror();
 		}		
 		$this->get_os();
 		/* detect type part stop */
@@ -333,6 +341,19 @@ class browser
 			preg_match($version,$ua,$v);
 			$version = $v[0];
 			$version = str_replace('Flock/','',$version);
+			$this->browser['browser']['version'] = $version;
+		}
+	}
+	private function get_konqueror()
+	{
+		$ua = $_SERVER['HTTP_USER_AGENT']; /* User Agent of Browser */
+		if(preg_match('/Konqueror/',$ua))
+		{
+			$this->browser['browser']['title'] = 'Konqueror';
+			$version = "/Konqueror\/[0-9.]{1,8}/";
+			preg_match($version,$ua,$v);
+			$version = $v[0];
+			$version = str_replace('Konqueror/','',$version);
 			$this->browser['browser']['version'] = $version;
 		}
 	}
