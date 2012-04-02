@@ -22,6 +22,7 @@ class browser
 		$opera = "/Opera/"; /* Opera Browser */
 		$s60 = "/S60/"; /* Nokia S60 */
 		$samsung_galaxy = "/Samsung Galaxy/"; /* Samsung Galaxy S */
+		$playstation3 = "/PLAYSTATION 3/"; /* Sony Play Station 3 */
 		$mozilla_firefox = "/Firefox/"; /* Mozilla Firefox desctop Browser */
 		$google_chrome = "/Chrome/"; /* Google Chrome desctop browser */
 		$chromium = "/Chromium/"; /* Chromium desctop browser */
@@ -106,6 +107,12 @@ class browser
 			$this->get_opera_mini();
 		}
 		else
+		if(preg_match($playstation3,$ua))
+		{
+			/* Playstation 3 */
+			$this->browser['device'] = 'Sony PlayStation 3';
+		}
+		else
 		if(preg_match($opera_mini,$ua))
 		{
 			/* Opera Mini Device */
@@ -184,14 +191,14 @@ class browser
 		else
 		if(preg_match($epiphany,$ua))
 		{
-			/* Camino desctop Browser */
+			/* Epiphany desctop Browser */
 			$this->browser['device'] = 'PC';
 			$this->get_epiphany();
 		}
 		else
 		if(preg_match($konqueror,$ua))
 		{
-			/* Camino desctop Browser */
+			/* Konqueror desctop Browser */
 			$this->browser['device'] = 'PC';
 			$this->get_konqueror();
 		}		
