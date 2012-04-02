@@ -30,6 +30,7 @@ class browser
 		$amaya = "/amaya/"; /* Amaya WYSIWYG editor */
 		$avant = "/Avant Browser/"; /* Awant desctop Browser */
 		$camino = "/Camino/"; /* Camino MAC OS web Browser */
+		$epiphany = "/Epiphany/"; /* Epiphany web Browser (default Gnome Browser) */
 		/* pattern part stop */
 		
 		/* detect type part start */
@@ -178,6 +179,13 @@ class browser
 			$this->browser['device'] = 'PC';
 			$this->get_camino();
 		}		
+		else
+		if(preg_match($epiphany,$ua))
+		{
+			/* Camino desctop Browser */
+			$this->browser['device'] = 'PC';
+			$this->get_epiphany();
+		}		
 		$this->get_os();
 		/* detect type part stop */
 	}
@@ -301,6 +309,19 @@ class browser
 			$this->browser['browser']['version'] = $version;
 		}
 	}
+	private function get_epiphany()
+	{
+		$ua = $_SERVER['HTTP_USER_AGENT']; /* User Agent of Browser */
+		if(preg_match('/Epiphany/',$ua))
+		{
+			$this->browser['browser']['title'] = 'Epiphany';
+			$version = "/Epiphany\/[0-9.]{1,8}/";
+			preg_match($version,$ua,$v);
+			$version = $v[0];
+			$version = str_replace('Epiphany/','',$version);
+			$this->browser['browser']['version'] = $version;
+		}
+	}
 	private function get_ie()
 	{
 		$ua = $_SERVER['HTTP_USER_AGENT']; /* User Agent of Browser */
@@ -321,6 +342,7 @@ class browser
 		/* pattern part start */
 		
 		$ubuntu = "/Ubuntu/"; /* Ubuntu */
+		$debian = "/Debian/"; /* Debian */
 		$linux = "/X11/"; /* Linux */
 		$ios = "/(CPU iPhone|CPU OS [0-9_]{2,10} like Mac OS X)/"; /* iOS */
 		$windows = "/(Windows|Win|WIN)/"; /* Windows */
@@ -337,6 +359,20 @@ class browser
 				preg_match($v,$ua,$result);
 				$version = $result[0];
 				$version = str_replace('Ubuntu/','',$version);
+				$this->browser['os']['version'] = $version;
+			}
+		}
+		else
+		if(preg_match($debian,$ua))
+		{
+			$this->browser['os']['title'] = 'Debian';
+			$v = "/Debian-\/[0-9.-]{2,10}/";
+			if(preg_match($v,$ua))
+			{
+				preg_match($v,$ua,$result);
+				$version = $result[0];
+				$version = str_replace('Debian','',$version);
+				$version = str_replace('-','',$version);
 				$this->browser['os']['version'] = $version;
 			}
 		}
