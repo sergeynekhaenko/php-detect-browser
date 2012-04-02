@@ -2,7 +2,7 @@
 /*
  * @author Sergey Nehaenko <sergey.nekhaenko@gmail.com> <nekhaenko.ru>
  * @version 1.0.1
- * @release_date 31.03.2012
+ * @release_date 02.04.2012
  */
 class browser
 {
