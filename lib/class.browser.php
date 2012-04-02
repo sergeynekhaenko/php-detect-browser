@@ -29,6 +29,7 @@ class browser
 		$ie = "MSIE"; /* Microsoft Internet explorer */ 
 		$amaya = "/amaya/"; /* Amaya WYSIWYG editor */
 		$avant = "/Avant Browser/"; /* Awant desctop Browser */
+		$camino = "/Camino/"; /* Camino MAC OS web Browser */
 		/* pattern part stop */
 		
 		/* detect type part start */
@@ -166,11 +167,17 @@ class browser
 		else
 		if(preg_match($amaya,$ua))
 		{
-			/* MS IE desctop Browser */
+			/* amaya editor */
 			$this->browser['device'] = 'PC';
-			$this->get_amaya);
+			$this->get_amaya();
 		}
-		
+		else
+		if(preg_match($camino,$ua))
+		{
+			/* Camino desctop Browser */
+			$this->browser['device'] = 'PC';
+			$this->get_camino();
+		}		
 		$this->get_os();
 		/* detect type part stop */
 	}
@@ -274,10 +281,23 @@ class browser
 		if(preg_match('/amaya/',$ua))
 		{
 			$this->browser['browser']['title'] = 'amaya';
-			$version = "/Version\/[0-9.]{1,8}/";
+			$version = "/amaya\/[0-9.]{1,8}/";
 			preg_match($version,$ua,$v);
 			$version = $v[0];
 			$version = str_replace('amaya/','',$version);
+			$this->browser['browser']['version'] = $version;
+		}
+	}
+	private function get_camino()
+	{
+		$ua = $_SERVER['HTTP_USER_AGENT']; /* User Agent of Browser */
+		if(preg_match('/Camino/',$ua))
+		{
+			$this->browser['browser']['title'] = 'Camino';
+			$version = "/Camino\/[0-9.]{1,8}/";
+			preg_match($version,$ua,$v);
+			$version = $v[0];
+			$version = str_replace('Camino/','',$version);
 			$this->browser['browser']['version'] = $version;
 		}
 	}
