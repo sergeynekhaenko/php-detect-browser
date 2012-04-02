@@ -47,25 +47,25 @@
 	</head>
 	<body>
 		<div id="container">
-			<div class="title">Device</div>
+			<div class="title">Устройство</div>
 			<div class="content">
 				<?php echo $browser->browser['device']."\n"; ?>
 			</div>
 			<?php if(isset($browser->browser['browser'])){ ?>
-			<div class="title">Browser</div>
+			<div class="title">Браузер</div>
 			<div class="content">
-				Title: <?php echo $browser->browser['browser']['title']; ?>
+				Название: <?php echo $browser->browser['browser']['title']; ?>
 				<?php if(isset($browser->browser['browser']['version'])){ ?><br/>
-				Version: <?php echo $browser->browser['browser']['version']."\n"; ?>
+				Версия: <?php echo $browser->browser['browser']['version']."\n"; ?>
 				<?php } ?>
 			</div>
 			<?php } ?>
 			<?php if(isset($browser->browser['os'])){ ?>
-			<div class="title">OS</div>
+			<div class="title">Операционная система</div>
 			<div class="content">
-				Title: <?php echo $browser->browser['os']['title']; ?>
+				Название: <?php echo $browser->browser['os']['title']; ?>
 				<?php if(isset($browser->browser['os']['version'])){ ?><br/>
-				Version: <?php echo $browser->browser['os']['version']."\n"; ?>
+				Версия: <?php echo $browser->browser['os']['version']."\n"; ?>
 				<?php } ?>
 			</div>
 			<?php } ?>
