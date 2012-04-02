@@ -1,7 +1,7 @@
 <?php
 /*
  * @author Sergey Nehaenko <sergey.nekhaenko@gmail.com> <nekhaenko.ru>
- * @version 1.0
+ * @version 1.0.1
  * @release_date 31.03.2012
  */
 class browser
@@ -25,6 +25,7 @@ class browser
 		$google_chrome = "/Chrome/"; /* Google Chrome desctop browser */
 		$chromium = "/Chromium/"; /* Chromium desctop browser */
 		$safari = "/Safari/"; /* Apple Safari desctop browser */
+		$ie = ""; /* Mickrosoft Internet explorer */ 
 		/* pattern part stop */
 		
 		/* detect type part start */
@@ -122,10 +123,17 @@ class browser
 		else
 		if(preg_match($safari,$ua))
 		{
+			/* Apple Safari Desctop Browser */
 			$this->browser['device'] = 'PC';
 			$this->get_safari();
 		}
-		
+		else
+		if(preg_match($ie,$ua))
+		{
+			/* MS IE desctop Browser */
+			$this->browser['device'] = 'PC';
+			$this->get_ie();
+		}
 		$this->get_os();
 		/* detect type part stop */
 	}
@@ -223,6 +231,19 @@ class browser
 			$this->browser['browser']['version'] = $version;
 		}
 	}
+	private function get_ie()
+	{
+		$ua = $_SERVER['HTTP_USER_AGENT']; /* User Agent of Browser */
+		if(preg_match('/MSIE [0-9.]{1,10}/',$ua))
+		{
+			$this->browser['browser']['title'] = 'Internet Explorer';
+			$version = "/MSIE [0-9.]{1,8}/";
+			preg_match($version,$ua,$v);
+			$version = $v[0];
+			$version = str_replace('MSIE ','',$version);
+			$this->browser['browser']['version'] = $version;
+		}
+	}
 	private function get_os()
 	{
 		$ua = $_SERVER['HTTP_USER_AGENT']; /* User Agent of Browser */
@@ -235,7 +256,7 @@ class browser
 		$windows = "/(Windows|Win|WIN)/"; /* Windows */
 		$macos = "/Mac OS X/"; /* Mac OS X */ 
 		$android = "/Android/"; /* Android */
-		$symbian = "/SymbOS/"; /* Symbian */
+		$symbian = "/(SymbOS|Symbian OS)/"; /* Symbian */
 		/* pattern part end */
 		if(preg_match($ubuntu,$ua))
 		{
@@ -268,12 +289,36 @@ class browser
 		if(preg_match($windows,$ua))
 		{
 			$this->browser['os']['title'] = 'Windows ';
+			$win2000 = '(NT 5.0|2000|NT 5.01)'; /* Windows 2000 */
+			$me = '9x 4.90'; /* Windows ME (Millenium Edition) */
+			$win95 = 'Windows 95'; /* Windows 95 */
+			$win98 = 'Windows 98'; /* Windows 98 */
 			$win8 = '/NT 6.2/'; /* Windows 8 */
 			$win7 = '/NT 6.1/'; /* Windows 7 */
 			$vista = '/NT 6.0/'; /* Windows Vista */
 			$xp = '/NT (5.1|5.2)/'; /* Windows XP */
-			$mobile = '/Mobile/'; /* Windows Mobile */
+			$mobile = '/(Mobile|CE)/'; /* Windows Mobile */
 			
+			if(preg_match($win2000,$ua))
+			{
+				$this->browser['os']['title'] .= '2000';
+			}
+			else
+			if(preg_match($me,$ua))
+			{
+				$this->browser['os']['title'] .= 'ME';
+			}
+			else
+			if(preg_match($win95,$ua))
+			{
+				$this->browser['os']['title'] .= '95';
+			}
+			else
+			if(preg_match($win98,$ua))
+			{
+				$this->browser['os']['title'] .= '98';
+			}
+			else
 			if(preg_match($win7,$ua))
 			{
 				$this->browser['os']['title'] .= '7';
@@ -329,5 +374,24 @@ class browser
 			$this->browser['os']['title'] = 'Symbian';
 		}
 	}
+}
+$browser = new browser();
+echo '<br>';
+foreach($browser->browser as $key => $value)
+{
+echo $key.': '.$value.'<br>';	
+}
+echo '[Browser]<br>';
+foreach($browser->browser['browser'] as $key => $value)
+{
+echo $key.': '.$value.'<br>';	
+}
+if(isset($browser->browser['os']))
+{
+echo '[OS]<br>';
+foreach($browser->browser['os'] as $key => $value)
+{
+echo $key.': '.$value.'<br>';	
+}
 }
 ?>
