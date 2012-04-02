@@ -25,7 +25,7 @@ class browser
 		$google_chrome = "/Chrome/"; /* Google Chrome desctop browser */
 		$chromium = "/Chromium/"; /* Chromium desctop browser */
 		$safari = "/Safari/"; /* Apple Safari desctop browser */
-		$ie = ""; /* Mickrosoft Internet explorer */ 
+		$ie = ""; /* Microsoft Internet explorer */ 
 		/* pattern part stop */
 		
 		/* detect type part start */
