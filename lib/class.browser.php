@@ -26,7 +26,8 @@ class browser
 		$google_chrome = "/Chrome/"; /* Google Chrome desctop browser */
 		$chromium = "/Chromium/"; /* Chromium desctop browser */
 		$safari = "/Safari/"; /* Apple Safari desctop browser */
-		$ie = ""; /* Microsoft Internet explorer */ 
+		$ie = "MSIE"; /* Microsoft Internet explorer */ 
+		$amaya = "/amaya/"; /* Amaya WYSIWYG editor */
 		/* pattern part stop */
 		
 		/* detect type part start */
@@ -154,6 +155,14 @@ class browser
 			$this->browser['device'] = 'PC';
 			$this->get_ie();
 		}
+		else
+		if(preg_match($amaya,$ua))
+		{
+			/* MS IE desctop Browser */
+			$this->browser['device'] = 'PC';
+			$this->get_amaya);
+		}
+		
 		$this->get_os();
 		/* detect type part stop */
 	}
@@ -248,6 +257,19 @@ class browser
 			preg_match($version,$ua,$v);
 			$version = $v[0];
 			$version = str_replace('Version/','',$version);
+			$this->browser['browser']['version'] = $version;
+		}
+	}
+	private function get_amaya()
+	{
+		$ua = $_SERVER['HTTP_USER_AGENT']; /* User Agent of Browser */
+		if(preg_match('/amaya/',$ua))
+		{
+			$this->browser['browser']['title'] = 'amaya';
+			$version = "/Version\/[0-9.]{1,8}/";
+			preg_match($version,$ua,$v);
+			$version = $v[0];
+			$version = str_replace('amaya/','',$version);
 			$this->browser['browser']['version'] = $version;
 		}
 	}
