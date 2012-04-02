@@ -21,7 +21,7 @@ class browser
 		$opera_mobile = "/Opera Mobi/"; /* Opera Mobile mobile Browser */
 		$opera = "/Opera/"; /* Opera Browser */
 		$s60 = "/S60/"; /* Nokia S60 */
-		$samsung_galaxy_s = "/Samsung Galaxy S/"; /* Samsung Galaxy S */
+		$samsung_galaxy = "/Samsung Galaxy/"; /* Samsung Galaxy S */
 		$mozilla_firefox = "/Firefox/"; /* Mozilla Firefox desctop Browser */
 		$google_chrome = "/Chrome/"; /* Google Chrome desctop browser */
 		$chromium = "/Chromium/"; /* Chromium desctop browser */
@@ -81,10 +81,20 @@ class browser
 			$this->get_opera_mobile();
 		}
 		else
-		if(preg_match($samsung_galaxy_s,$ua))
+		if(preg_match($samsung_galaxy,$ua))
 		{
-			/* Nokia S60 */
-			$this->browser['device'] = 'Samsung Galaxy S';
+			/* Samsung Galaxy Devices */
+			if(preg_match('/Samsung Galaxy S/',$ua))
+			{
+				$this->browser['device'] = 'Samsung Galaxy S';
+			}
+			else
+			if(preg_match('/Samsung Galaxy Tab/',$ua))
+			{
+				$this->browser['device'] = 'Samsung Galaxy Tab';
+			}
+			else
+				$this->browser['device'] = 'Samsung Galaxy';
 			$this->get_safari_mobile();
 			$this->get_opera_mobile();
 			$this->get_opera_mini();
