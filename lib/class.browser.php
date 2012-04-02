@@ -31,6 +31,7 @@ class browser
 		$avant = "/Avant Browser/"; /* Awant desctop Browser */
 		$camino = "/Camino/"; /* Camino MAC OS web Browser */
 		$epiphany = "/Epiphany/"; /* Epiphany web Browser (default Gnome Browser) */
+		$flock = "/Flock/"; /* Flock desctop Web Browser */
 		/* pattern part stop */
 		
 		/* detect type part start */
@@ -319,6 +320,19 @@ class browser
 			preg_match($version,$ua,$v);
 			$version = $v[0];
 			$version = str_replace('Epiphany/','',$version);
+			$this->browser['browser']['version'] = $version;
+		}
+	}
+	private function get_flock()
+	{
+		$ua = $_SERVER['HTTP_USER_AGENT']; /* User Agent of Browser */
+		if(preg_match('/Flock/',$ua))
+		{
+			$this->browser['browser']['title'] = 'Flock';
+			$version = "/Epiphany\/[0-9.]{1,8}/";
+			preg_match($version,$ua,$v);
+			$version = $v[0];
+			$version = str_replace('Flock/','',$version);
 			$this->browser['browser']['version'] = $version;
 		}
 	}
