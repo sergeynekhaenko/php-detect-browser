@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8"/>
 		<title>PHP detect Browser example</title>
 		<style>
 			html 
