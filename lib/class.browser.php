@@ -378,7 +378,7 @@ class browser
 		
 		$ubuntu = "/Ubuntu/"; /* Ubuntu */
 		$debian = "/Debian/"; /* Debian */
-		$linux = "/X11/"; /* Linux */
+		$linux = "/(X11|Linux)/"; /* Linux */
 		$ios = "/(CPU iPhone|CPU OS [0-9_]{2,10} like Mac OS X)/"; /* iOS */
 		$windows = "/(Windows|Win|WIN)/"; /* Windows */
 		$macos = "/Mac OS X/"; /* Mac OS X */ 
@@ -412,10 +412,6 @@ class browser
 			}
 		}
 		else
-		if(preg_match($linux,$ua))
-		{
-			$this->browser['os']['title'] = 'Linux';
-		}
 		if(preg_match($ios,$ua))
 		{
 			$this->browser['os']['title'] = 'iOS';
@@ -508,6 +504,11 @@ class browser
 				$version = str_replace('Android ','',$version);
 				$this->browser['os']['version'] = $version;
 			}
+		}
+		else
+		if(preg_match($linux,$ua))
+		{
+			$this->browser['os']['title'] = 'Linux';
 		}
 		else
 		if(preg_match($symbian,$ua))
