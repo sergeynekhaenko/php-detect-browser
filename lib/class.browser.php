@@ -28,6 +28,7 @@ class browser
 		$safari = "/Safari/"; /* Apple Safari desctop browser */
 		$ie = "MSIE"; /* Microsoft Internet explorer */ 
 		$amaya = "/amaya/"; /* Amaya WYSIWYG editor */
+		$avant = "/Avant Browser/"; /* Awant desctop Browser */
 		/* pattern part stop */
 		
 		/* detect type part start */
@@ -147,6 +148,13 @@ class browser
 			/* Apple Safari Desctop Browser */
 			$this->browser['device'] = 'PC';
 			$this->get_safari();
+		}
+		else
+		if(preg_match($avant,$ua))
+		{
+			/* Apple Safari Desctop Browser */
+			$this->browser['device'] = 'PC';
+			$this->browser['browser']['title'] = 'Avant'; 
 		}
 		else
 		if(preg_match($ie,$ua))
