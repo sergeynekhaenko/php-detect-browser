@@ -6,6 +6,8 @@ Description: Detect Browser, Browser Version, Device, OS , OS Version
 Changelog:
 	v 1.0.1:
 	added detection:
+	•devices:
+	 - Samsung Galaxy S
 	•browsers:
 	 - MSIE 
 	•OS:

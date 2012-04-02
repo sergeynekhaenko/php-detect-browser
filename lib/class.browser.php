@@ -21,6 +21,7 @@ class browser
 		$opera_mobile = "/Opera Mobi/"; /* Opera Mobile mobile Browser */
 		$opera = "/Opera/"; /* Opera Browser */
 		$s60 = "/S60/"; /* Nokia S60 */
+		$samsung_galaxy_s = "/Samsung Galaxy S/"; /* Samsung Galaxy S */
 		$mozilla_firefox = "/Firefox/"; /* Mozilla Firefox desctop Browser */
 		$google_chrome = "/Chrome/"; /* Google Chrome desctop browser */
 		$chromium = "/Chromium/"; /* Chromium desctop browser */
@@ -78,6 +79,15 @@ class browser
 			$this->browser['device'] = 'Nokia S60';
 			$this->get_opera_mini();
 			$this->get_opera_mobile();
+		}
+		else
+		if(preg_match($samsung_galaxy_s,$ua))
+		{
+			/* Nokia S60 */
+			$this->browser['device'] = 'Samsung Galaxy S';
+			$this->get_safari_mobile();
+			$this->get_opera_mobile();
+			$this->get_opera_mini();
 		}
 		else
 		if(preg_match($opera_mini,$ua))
@@ -291,8 +301,8 @@ class browser
 			$this->browser['os']['title'] = 'Windows ';
 			$win2000 = '(NT 5.0|2000|NT 5.01)'; /* Windows 2000 */
 			$me = '9x 4.90'; /* Windows ME (Millenium Edition) */
-			$win95 = 'Windows 95'; /* Windows 95 */
-			$win98 = 'Windows 98'; /* Windows 98 */
+			$win95 = '(Windows |Win)95'; /* Windows 95 */
+			$win98 = '(Windows |Win)98'; /* Windows 98 */
 			$win8 = '/NT 6.2/'; /* Windows 8 */
 			$win7 = '/NT 6.1/'; /* Windows 7 */
 			$vista = '/NT 6.0/'; /* Windows Vista */
